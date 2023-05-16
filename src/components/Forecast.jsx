@@ -3,7 +3,10 @@ import { iconUrlFromCode } from '../services/weatherServices';
 
 function Forecast({ title, items }) {
 
-    console.log(items);
+    if (!items || !items.map) {
+        return null;
+    }
+
     return (
         <div>
             <div className='flex item-center justify-start my-6'>
@@ -17,7 +20,7 @@ function Forecast({ title, items }) {
                             {item.title}
                         </p>
                         <img src={iconUrlFromCode(item.icon)} className='w-12 my-1' alt="" />
-                        <p className='font-medium'>{`${item.temp}°`}</p>
+                        <p className='font-medium'>{`${item.temp.toFixed()}°`}</p>
                     </div>
                 ))}
 
