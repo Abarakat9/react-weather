@@ -4,7 +4,6 @@ const API_KEY = "b8846a4ddf4fcd47e8b2dfdb704fa7f8"
 const BASE_URL = "https://api.openweathermap.org/data/2.5"
 
 
-
 const getWeatherData = (infoType, searchParams) => {
     const url = new URL(BASE_URL + '/' + infoType);
     url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
@@ -38,7 +37,7 @@ const formatForecastWeather = (data) => {
 
     daily = daily.slice(1, 6).map(d => {
         return {
-            title: formatToLocalTime(d.dt, timezone, 'hh:mm a'),
+            title: formatToLocalTime(d.dt, timezone, 'ccc'),
             temp: d.temp.day,
             icon: d.weather[0].icon
         };
